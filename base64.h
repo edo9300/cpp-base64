@@ -33,15 +33,15 @@
 #include <algorithm>
 
 static const char* base64_chars[2] = {
-             "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-             "abcdefghijklmnopqrstuvwxyz"
-             "0123456789"
-             "+/",
+			 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			 "abcdefghijklmnopqrstuvwxyz"
+			 "0123456789"
+			 "+/",
 
-             "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-             "abcdefghijklmnopqrstuvwxyz"
-             "0123456789"
-             "-_"};
+			 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			 "abcdefghijklmnopqrstuvwxyz"
+			 "0123456789"
+			 "-_" };
 
 static int pos_of_char(int chr) {
 	//
@@ -123,7 +123,7 @@ T base64_encode(const B* buf, S bufLen, bool url = false) {
 	return ret;
 }
 
-template<typename R = std::string, typename T = std::string, typename valtype = typename T::value_type>
+template<typename R, typename T, typename valtype>
 R base64_encode(const T& encoded_string, bool url) {
 	return base64_encode<R, valtype>(encoded_string.data(), encoded_string.size(), url);
 }
@@ -213,7 +213,7 @@ R base64_decode(const T* encoded_string, size_t in_len, bool remove_linebreaks =
 	return ret;
 }
 
-template<typename R = std::string, typename T = std::wstring, typename valtype = typename T::value_type>
+template<typename R = std::string, typename T = std::string, typename valtype = typename T::value_type>
 R base64_decode(const T& encoded_string, bool remove_linebreaks = false) {
 	return base64_decode<R, valtype>(encoded_string.data(), encoded_string.size(), remove_linebreaks);
 }
